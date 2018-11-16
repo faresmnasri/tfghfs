@@ -11,7 +11,7 @@ function onstart(){
 setInterval(function(){
 
 var currentTime = new Date(),
-hours = currentTime.getHours() + 0 ,
+hours = currentTime.getHours() + 1 ,
 minutes = currentTime.getMinutes(),
 seconds = currentTime.getSeconds();
 
