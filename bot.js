@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require("moment");  
 const fs = require("fs"); 
-
+const Eris = require("eris");
+var bot = new Eris("process.env.BOT_TOKEN");
 
 
 
@@ -108,4 +109,3 @@ voiceonline.setName(`Voice Online :[ ${msg.guild.members.filter(m => m.voiceChan
 }
 });
 
-client.login(process.env.BOT_TOKEN);
