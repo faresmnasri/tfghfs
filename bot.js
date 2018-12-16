@@ -36,76 +36,39 @@ client.user.setGame(`-setstats`,"http://twitch.tv/S-F")
 
 
 
-client.on('message',async msg => {
-  if(msg.channel.type === "dm") return;
-if(msg.author.bot) return;
-var p = "-";
-if(msg.content.startsWith(p + "setstats")) {
-if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('? **you should have MANAGE CHANNELS role **');
-if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('? **the bot has not MANAGE CHANNELS role **');
-var stats = msg.guild.createChannel('📊 Server Stats 📊', 'category').then(kk => {
-  var member =msg.guild.createChannel('Members Count [ 0 ] ', 'voice').then(member => {
-        var voiceonline =msg.guild.createChannel('Voiceonline [ 0 ]', 'voice').then(voiceonline => {
-             var time =msg.guild.createChannel('🕐 - Time  ', 'voice').then(time => {
-              var c = msg.guild.createChannel(`Day : ${moment().format('dddd')}` , 'voice').then(c => {
-    member.setParent(kk);            
-    voiceonline.setParent(kk);
-    time.setParent(kk);
-    c.setParent(kk);
-
- 
-    member.overwritePermissions(msg.guild.id, {
-      CONNECT: false,
-      SPEAK: false
-    });
-  voiceonline.overwritePermissions(msg.guild.id, {
-   CONNECT: false,
-   SPEAK: false
- });
-  time.overwritePermissions(msg.guild.id, {
-   CONNECT: false,
-   SPEAK: false
- });
- c.overwritePermissions(msg.guild.id, {
-  CONNECT: false,
-  SPEAK: false
+const Eris = require("eris");
+var bot = new Eris(process.env.BOT_TOKENs);
+var id = "519106470042927116";
+//** لاتعدل على شي تحت ذا **//
+bot.on("ready", () => {
+onstart();
 });
 
+function onstart(){
 
+setInterval(function(){
 
-setInterval(function() {
+var currentTime = new Date(),
+hours = currentTime.getHours() + 1 ,
+minutes = currentTime.getMinutes(),
+seconds = currentTime.getSeconds();
 
-  var currentTime = new Date(),
-  hours = currentTime.getHours() + 3 ,
-  minutes = currentTime.getMinutes(),
-  seconds = currentTime.getSeconds(),
-  years = currentTime.getFullYear(),
-  month = currentTime.getMonth(),
-  day = currentTime.getDay();
-
-  if (minutes < 10) {
-      minutes = "0" + minutes;
-  }
-  var suffix = "AM";
-  if (hours >= 12) {
-      suffix = "PM";
-      hours = hours - 12;
-  }
-  if (hours == 0) {
-      hours = 12;
-  }
-  member.setName(`Members Count : [ ${msg.guild.members.size} ]`)
-voiceonline.setName(`Voice Online :[ ${msg.guild.members.filter(m => m.voiceChannel).size} ]`);
-   time.setName(`🕐 - Time : 「${hours} : ${minutes} :  ${suffix}」`);
-     c.setName(`📅 - Day : 「${moment().format('dddd')}」`);
-},1000);
-                })
-
-             })
-        })
-      })
-})
-        
+if (minutes < 10) {
+minutes = "0" + minutes;
 }
-});
+var suffix = "صباحاَ";
+if (hours >= 24) {
+suffix = "مساء";
+hours = hours - 24;
+}
+if (hours == 0) {
+hours = 24;
+}
+
+bot.editChannel(id, { name : "●⌠  " + hours + ":" + minutes + "  ⌡●"});
+}, 60000);
+
+}
+
+bot.connect();
 
