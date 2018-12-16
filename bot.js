@@ -40,8 +40,8 @@ client.on('message',async msg => {
 if(msg.author.bot) return;
 var p = "-";
 if(msg.content.startsWith(p + "setstats")) {
-if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('? **يجب ان تمتلك رتبه **');
-if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('? **البوت لا يمتلك صلاحية**');
+if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('? **you should have MANAGE CHANNELS role **');
+if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('? **the bot has not MANAGE CHANNELS role **');
 var stats = msg.guild.createChannel('📊 Server Stats 📊', 'category').then(kk => {
   var member =msg.guild.createChannel('Members Count [ 0 ] ', 'voice').then(member => {
         var voiceonline =msg.guild.createChannel('Voiceonline [ 0 ]', 'voice').then(voiceonline => {
