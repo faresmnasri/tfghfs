@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const moment = require("moment");  
 const fs = require("fs"); 
 const Eris = require("eris");
-var bot = new Eris("process.env.BOT_TOKEN");
+var bot = new Eris(process.env.BOT_TOKEN);
 
 
 
