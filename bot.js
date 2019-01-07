@@ -12,7 +12,7 @@ setInterval(function(){
     
 var currentTime = new Date(),
 hours = currentTime.getHours() + 1 ,
-minutes = currentTime.getMinutes(),
+minutes = currentTime.getMinutes() + 1 ,
 seconds = currentTime.getSeconds();
     
 if (minutes < 10) {
