@@ -13,7 +13,7 @@ setInterval(function(){
 var currentTime = new Date(),
 hours = currentTime.getHours() + 1 ,
 minutes = currentTime.getMinutes() + 1 ,
-seconds = currentTime.getSeconds();
+seconds = currentTime.getSeconds() + 10 ;
     
 if (minutes < 10) {
 minutes = "0" + minutes;
