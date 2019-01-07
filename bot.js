@@ -12,8 +12,8 @@ setInterval(function(){
     
 var currentTime = new Date(),
 hours = currentTime.getHours() + 1 ,
-minutes = currentTime.getMinutes() + 1 ,
-seconds = currentTime.getSeconds() + 10 ;
+minutes = currentTime.getMinutes(),
+seconds = currentTime.getSeconds() + 25 ;
     
 if (minutes < 10) {
 minutes = "0" + minutes;
